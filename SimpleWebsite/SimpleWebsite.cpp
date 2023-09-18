@@ -13,20 +13,20 @@ int main()
 	asio::error_code ec;
 	// Create a context
 	asio::io_context context;
-	// Get the address of somewhere we with to connect to
+	// Get the address of somewhere we with to connect to - example.com
 	asio::ip::tcp::endpoint endpoint(asio::ip::make_address("93.184.216.34", ec), 80);
 	// Create a socket
 	asio::ip::tcp::socket socket(context);
 	// Tell socket to try and connect
 	socket.connect(endpoint, ec);
 
-	if (!ec)
+	if (!ec) // Check if error
 	{
 		std::cout << "Connected!" << std::endl;
 	}
 	else
 	{
-		std::cout << "Failted to connect to address:\n" << ec.message() << std::endl;
+		std::cout << "Failed to connect to address:\n" << ec.message() << std::endl;
 	}
 
 	return 0;
